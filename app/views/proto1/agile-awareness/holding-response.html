@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+<div class="phase-banner">
+  <p>
+    <strong class="phase-tag">ALPHA</strong>
+    <span>This is a new service – your <a href="#">feedback</a> will help us to improve it.</span>
+  </p>
+</div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+<h1 class="heading-medium">
+        Thank you for applying for the Digital and Agile Awareness course.
+     </h1>
+
+<p>An email confirmation will now be sent to you with a summary of your details, and we will begin to review your application. If you are successful, an official invitation will be sent out to you via email.</p>
+
+<p>If you have any questions about your application, please call us on our helpline or email us.</p>
+
+<p>gds.academy@digital.cabinet-office.gov.uk</p>
+
+<p>12345 678 910</p>
+<p>Kind regards,</p>
+
+  <p> GDS Academy Team </p>
+
+  <a href="summary-page" class="link-back">Back to summary</a>
+  <form action="/proto1/return-to-start" method="post">
+      <input class="button" type="submit" name="" value="Finish">
+  </form>
+
+
+
+  </div>
+</main>
+{% endblock %}

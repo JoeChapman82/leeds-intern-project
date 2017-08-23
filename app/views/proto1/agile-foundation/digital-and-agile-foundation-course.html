@@ -1,0 +1,178 @@
+{% extends "layout.html" %}
+
+{% import 'proto1/macros/elements.njk' as forms %}
+
+{% block page_title %}
+  GOV.UK Agile Foundation
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+<div class="phase-banner">
+  <p>
+    <strong class="phase-tag">ALPHA</strong>
+    <span>This is a new service – your <a href="#">feedback</a> will help us to improve it.</span>
+  </p>
+</div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+        {% if errors %}
+        {{ forms.errorSummary(errors) }}
+        {% endif %}
+
+      <h1 class="heading-large">
+        Digital and Agile Foundation Course
+     </h1>
+
+     <p class="lede">
+  The 10 day Academy Digital & Agile Foundation course enables you to discover what it means to be part of an Agile, multi-disciplinary team, delivering digital services in Government.
+    </p>
+
+<details>
+
+        <summary><span class="summary">Course Overview</span></summary>
+
+        <div>
+          <p>
+          Agile is a time boxed, iterative approach to software delivery that builds software incrementally from the start of the project, instead of trying to deliver it all at once near the end. However, agile principles can be applied to a range of services, and can be adapted to suit many working environments.
+          </p>
+        </div>
+
+        <div>
+        <p>
+       You will learn about the different phases of service design – introducing agile delivery methods and tools / techniques. You will apply your learning in a simulated project environment and on completion will be familiar with agile methodology & terminology.
+        </p>
+        </div>
+ </details>
+
+ <details>
+
+        <summary><span class="summary">Assessment</span></summary>
+
+        <div>
+          <p>
+            This is a City and Guilds accredited course, meaning you will receive a certificate upon completion.
+          </p>
+          <p>
+            To successfully complete the course you will need to pass two short online tests held on day 4 and day 8. These tests are multiple-choice and each have a pass mark of 10 out of 15.
+          </p>
+          <p>
+            If you do not achieve the pass mark for either test, you will have the opportunity to re-sit the test a total of 2 times and the delivery manager will support you with this.
+          </p>
+          <p>
+            The tests are important to ensure you have understood the course, but you will also receive feedback on your Agile skills throughout the practical exercises.
+          </p>
+
+        </div>
+
+ </details>
+
+ <details>
+
+        <summary><span class="summary">Duration</span></summary>
+
+        <div>
+        <p>
+         Please note that these timings are a guide only and may vary slightly on the day. The course lasts 10 days.
+        </p>
+
+          <dl>
+          <dt>Monday</dt>
+          <dd>
+          11:00 - 17:00
+          </dd>
+          <dt>Tuesday</dt>
+          <dd>
+          9:30 - 17:00
+          </dd>
+          <dt>Wednesday</dt>
+          <dd>
+          9:30 - 17:00
+          </dd>
+          <dt>Thursday</dt>
+          <dd>
+          9:30 - 17:00
+          </dd>
+          <dt>Friday</dt>
+          <dd>
+          9:30 - 15:00
+          </dd>
+          </dl>
+
+
+        </div>
+
+ </details>
+
+ <details>
+
+        <summary><span class="summary">Modules</span></summary>
+
+        <div>
+
+          <ul class="list list-bullet">
+            <li>Welcome and Introduction</li>
+            <li>MacBook Familiarisation</li>
+            <li>Agile principles and culture</li>
+            <li>Agile Simulation exercise</li>
+            <li>User Research</li>
+            <li>User Stories and Journey Mapping</li>
+            <li>Introduction to Discovery and course project</li>
+            <li>GDS Service Standard Assessment</li>
+            <li>Security Identity</li>
+            <li>Security: Cyber Security Awareness</li>
+            <li>Introduction to the Internet & Coding</li>
+            <li>Objectives Review</li>
+            <li>User Research in Alpha & Beta</li>
+            <li>Scrum Overview</li>
+            <li>Scrum Simulation Exercise</li>
+            <li>Agile Estimating and Planning</li>
+            <li>Backlog Refinement</li>
+            <li>Sprint Planning</li>
+            <li>Digital & Customer Analytics</li>
+            <li>Governance</li>
+
+          </ul>
+
+        </div>
+
+ </details>
+
+  <legend>
+      <h3 class="heading-medium">Please read the following eligibility criteria.</h3>
+
+          <ul class="list list-bullet">
+      <li>You must work in a government department, agency or local authority</li>
+      <li>You must be working on, or about to start work on a digital project</li>
+      <li>You must have approval from your line manager to attend the course</li>
+
+          </ul>
+  </legend>
+
+
+<form method="post" action="/proto1/agile-foundation/digital-and-agile-foundation-course">
+    {{ forms.radioButtons('eligible', 'Confirm if you are eligible', errors.eligible, [
+    {
+        label: 'Yes, I am eligible.',
+        value: 'Yes'
+    },
+    {
+        label: 'No, I am not eligible.',
+        value: 'No'
+    }
+    ])}}
+
+    <a href="../available-courses" class="link-back">Back to course information</a>
+    <p><input type="submit" class="button" name="" value="Continue"></p>
+</form>
+
+
+    </div>
+
+  </div>
+</main>
+
+{% endblock %}

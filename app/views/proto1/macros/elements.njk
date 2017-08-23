@@ -1,0 +1,126 @@
+{# Macros for index page #}
+
+{% macro current(versionNumber, releaseDate, startLink, changeArray, researchDlLink, dlSize) %}
+<div class="current-version">
+  <div class="version-number">
+    <p class="index-p">Current version</p>
+    <h3 class="heading-medium index-heading-medium">Prototype {{ versionNumber }}</h3>
+  </div>
+  <div class="release-date">
+    <p class="index-p">Date of release</p>
+    <h3 class="heading-medium index-heading-medium">{{ releaseDate }}</h3>
+  </div>
+  <div class="start-now clearfix">
+    <a class="button start-journey" href="{{ startLink }}">Start now</a>
+  </div>
+  <div class="changes-made">
+    <h4 class="heading-small">Changes made to this version</h4>
+    <ul class="list list-bullet">
+      {% for item in changeArray %}
+      <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- <div class="research-findings">
+    <h4 class="heading-small">Research insights from testing this version</h4>
+  </div> -->
+</div>
+{% endmacro %}
+
+{% macro older(versionNumber, releaseDate, startLink, changeArray, researchFindings, dlSize ) %}
+<div class="older-version">
+  <div class="version-number">
+    <p class="index-p">Version</p>
+    <h4 class="heading-small index-heading-medium">Prototype {{ versionNumber }}</h4>
+  </div>
+  <div class="release-date">
+    <p class="index-p">Date of release</p>
+    <h4 class="heading-small index-heading-medium">{{ releaseDate }}</h4>
+  </div>
+  <div class="start-now clearfix">
+    <a class="button grey-button" href="{{ startLink }}">Launch prototype</a>
+  </div>
+  <div class="changes-made">
+    <h4 class="heading-small">Changes made to this version</h4>
+    <ul class="list list-bullet">
+      {% if changeArray[0].length > 1 %}
+      {% for item in changeArray %}
+      <li>{{ item }}</li>
+      {% endfor %}
+      {% else %}
+      <li>{{ changeArray }}</li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="research-findings">
+    <h4 class="heading-small">Research insights from testing this version</h4>
+    <ul class="list list-bullet">
+      {% if researchFindings[0].length > 1 %}
+      {% for item in researchFindings %}
+      <li>{{ item }}</li>
+      {% endfor %}
+      {% else %}
+      <li>{{ researchFindings }}</li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+{% endmacro %}
+
+{% macro banner() %}
+<div class="phase-banner-beta">
+<p><strong class="phase-tag" style="background-color:#1562A1;">Prototype</strong>
+<span>This is being used to test out a new element of the service</span>
+</p>
+</div>
+{% endmacro %}
+
+{% macro radioButtons(id, label, error, radios) %}
+<div class="form-group{% if error %} form-group-error{% endif %}">
+    <fieldset>
+    <legend id="{{ id }}">
+        <h3 class="heading-medium">{{ label }}</h3>
+    </legend>
+    {% if error %}
+    <span class="error-message">{{ error.msg }}</span>
+    {% endif %}
+    {% for item in radios %}
+    <div class="multiple-choice">
+        <input id="{{ id }}-{{ loop.index }}" type="radio" name="{{ id }}" value="{{ item.value }}">
+        <label for="{{ id }}-{{ loop.index }}">{{ item.label }}</label>
+    </div>
+    {% endfor %}
+</fieldset>
+</div>
+{% endmacro %}
+
+{% macro textInput(id, label, error, hintText, value) %}
+<div class="form-group{% if error %} form-group-error{% endif %}">
+    <label class="form-label-bold block-label" for="{{ id }}">{{ label }}
+        {% if hintText %}
+            <span class="form-hint">
+                {{ hintText }}
+            </span>
+        {% endif %}
+        {% if error %}
+            <span class="error-message">{{ error.msg }}</span>
+        {% endif %}
+    </label>
+    <input id="{{ id }}" class="form-control{% if error %} form-control-error{% endif %}" type="text" name="{{ id }}" value="{{ value }}">
+</div>
+{% endmacro %}
+
+{% macro errorSummary(errors) %}
+<div class="error-summary" role="group" aria-labelledby="error-summary" tabindex="-1">
+
+    <h1 class="heading-medium error-summary-heading" id="errorSummary">
+    There's a problem
+    </h1>
+    <p>You must: </p>
+    <ul class="error-summary-list">
+        {% for key, value in errors %}
+        <li><a href="#{{ value.param }}">{{ value.msg }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endmacro %}

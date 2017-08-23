@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% import 'proto1/macros/elements.njk' as forms %}
+
+
+{% block page_title %}
+GOV.UK Agile Foundation
+{% endblock %}
+
+{% block content %}
+
+
+<main id="content" role="main">
+<div class="phase-banner">
+  <p>
+    <strong class="phase-tag">ALPHA</strong>
+    <span>This is a new service – your <a href="#">feedback</a> will help us to improve it.</span>
+  </p>
+</div>
+
+{% if errors %}
+{{ forms.errorSummary(errors) }}
+{% endif %}
+
+ <h1 class="heading-large">
+        Digital and Agile Foundation Course
+      </h1>
+
+<br>
+      <form action="/proto1/agile-foundation/select-your-course" method="post" class="form">
+        <div class="form-group">
+
+           <legend class="heading-medium">
+             Choose a course from the list below
+           </legend>
+
+  <div class="form-group">
+    <fieldset>
+
+      <legend>
+        <h1 class="heading-small">London</h1>
+      </legend>
+
+      <div class="multiple-choice">
+        <input id="radio-1" type="radio" name="radio-group" value="London, 11 to 21 September 2017">
+        <label for="radio-1">11 to 21 September 2017
+        <p class="font-xsmall">4 spaces available</p></label>
+      </div>
+      <div class="multiple-choice">
+        <input id="radio-2" type="radio" name="radio-group" value="London, 12 to 24 November 2017" disabled>
+        <label for="radio-2">12 to 24 November 2017 <p class="font-xsmall">Course full</p></label>
+      </div>
+  </fieldset>
+
+
+  <div class="form-group">
+    <fieldset>
+      <legend>
+
+        <h1 class="heading-small">Leeds</h1>
+      </legend>
+
+      <div class="multiple-choice">
+        <input id="radio-3" type="radio" name="radio-group" value="Leeds, 2 to 12 October 2017">
+        <label for="radio-3">2 to 13 October 2017 <p class="font-xsmall">8 spaces available</p></label>
+      </div>
+
+  <div class="form-group">
+    <fieldset>
+
+      <legend>
+
+        <h1 class="heading-small">Newcastle</h1>
+      </legend>
+
+      <div class="multiple-choice">
+        <input id="radio-4" type="radio" name="radio-group" value="Newcastle, 30 October to 10 November 2017">
+        <label for="radio-4">30 October to 10 November 2017<p class="font-xsmall">15 spaces available</p></label>
+      </div>
+    </fieldset>
+  </div>
+</fieldset>
+
+
+<div class="form-group">
+    <a href="digital-and-agile-foundation-course" class="link-back">Back to course information</a>
+    <br />
+    <input class="button" type="submit" name="" value="Continue">
+</div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

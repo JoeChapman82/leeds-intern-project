@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GDS Academy Apply - Summary
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+<div class="phase-banner">
+  <p>
+    <strong class="phase-tag">ALPHA</strong>
+    <span>This is a new service – your <a href="#">feedback</a> will help us to improve it.</span>
+  </p>
+</div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">
+        Digital and Agile Awareness
+     </h1>
+
+     <h1 class="heading-medium">
+        Summary
+     </h1>
+<div class="grid-row">
+
+  <div class="column-one-third">
+    <p>Course Name:</p>
+    <p>Course Duration:</p>
+    <p>Start date:</p>
+    <p>End Date:</p>
+    <p>Location:</p>
+    <p>Name:</p>
+    <p>Department or Agency:</p>
+    <p>Telephone:</p>
+    <p>Email:</p>
+    <p>Line manager's email:</p>
+  </div>
+
+  <div class="column-two-thirds">
+    <p>Digital and Agile Awareness</p>
+    <p>1 Day</p>
+    <p>{% if date %}{{ date }}{% else %}Tuesday 24 October 2017{% endif %}</p>
+    <p>{% if date %}{{ date }}{% else %}Tuesday 24 October 2017{% endif %}</p>
+    <p>{% if location %}{{ location }}{% else %}Newcastle{% endif %}</p>
+    <p>{% if name %}{{ name }}{% else %}Joe Bloggs{% endif %}</p>
+    <p>{% if department %}{{ department }}{% else %}DWP{% endif %}</p>
+    <br>
+    <p>{% if telephone %}{{ telephone }}{% else %}0843 515 8313{% endif %}</p>
+    <p>{% if email %}{{ email }}{% else %}JoeBloggs@dwp.gsi.gov.uk{% endif %}</p>
+    <p>{% if lineManager %}{{ lineManager }}{% else %}Janedoe@dwp.gsi.gov.uk{% endif %}</p>
+  </div>
+
+  <a href="/proto1/agile-awareness/application-page" class="link-back">Back to select your details</a>
+    <p> <a class="button" href="holding-response">Confirm</a></p>
+  </div>
+  </div>
+  </div>
+</main>
+{% endblock %}

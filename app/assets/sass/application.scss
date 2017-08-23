@@ -29,3 +29,18 @@ $path: "/public/images/";
 }
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+dt {
+  clear: both;
+  overflow: hidden;
+  display: block;
+  width: 25%;
+  float: left;
+}
+
+dd {
+  float: left;
+  overflow: hidden;
+  display: block;
+  width: 60%;
+
+}

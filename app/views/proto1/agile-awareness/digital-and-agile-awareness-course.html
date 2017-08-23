@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% import 'proto1/macros/elements.njk' as forms %}
+
+{% block page_title %}
+  GOV.UK Agile Foundation
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+<div class="phase-banner">
+  <p>
+    <strong class="phase-tag">ALPHA</strong>
+    <span>This is a new service – your <a href="#">feedback</a> will help us to improve it.</span>
+  </p>
+</div>
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+
+        {% if errors %}
+        {{ forms.errorSummary(errors) }}
+        {% endif %}
+
+        {% include 'proto1/partials/agile-awareness-overview.njk' %}
+
+            <form method="post" action="/proto1/agile-awareness/digital-and-agile-awareness-course">
+
+                {{ forms.radioButtons('eligible', 'Confirm if you are eligible', errors.eligible, [
+                {
+                    label: 'Yes, I am eligible.',
+                    value: 'Yes'
+                },
+                {
+                    label: 'No, I am not eligible.',
+                    value: 'No'
+                }
+                ])}}
+
+                <a href="../available-courses" class="link-back">Back to course information</a>
+                <p><input type="submit" class="button" name="" value="Continue"></p>
+            </form>
+
+        </div>
+    </div>
+</main>
+
+{% endblock %}

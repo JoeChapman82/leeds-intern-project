@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% import 'proto1/macros/elements.njk' as forms %}
+
+
+{% block page_title %}
+  Example - Forms
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+<div class="phase-banner">
+  <p>
+    <strong class="phase-tag">ALPHA</strong>
+    <span>This is a new service – your <a href="#">feedback</a> will help us to improve it.</span>
+  </p>
+</div>
+
+{% if errors %}
+{{ forms.errorSummary(errors) }}
+{% endif %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+<h1 class="heading-large">Digital and Agile Foundation Course</h1>
+<p> You have currently selected: </p>
+<p>{{ course }}</p>
+
+<h2 class="heading-medium">Your details</h2>
+  <form action="/proto1/agile-foundation/application-page" method="post" class="form">
+
+      {{ forms.textInput('firstName', 'First name', errors.firstName, '', firstName) }}
+      {{ forms.textInput('lastName', 'Last name', errors.lastName, '', lastName) }}
+      {{ forms.textInput('department', 'Department or agency', errors.department, '', department) }}
+      {{ forms.textInput('telephone', 'Telephone',  errors.telephone, 'Work or Personal', telephone) }}
+      {{ forms.textInput('email', 'Email', errors.email, '', email) }}
+      {{ forms.textInput('lineManager', 'Line manager\'s email', errors.lineManager, 'Emergency contact only', lineManager) }}
+
+      <a href="select-your-course" class="link-back">Back to select your course</a>
+      <br />
+      <input class="button" type="submit" name="" value="Continue to summary">
+
+  </form>
+  </div>
+
+</div>
+</main>
+{% endblock %}
