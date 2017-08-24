@@ -12,121 +12,96 @@ GOV.UK Agile Foundation
 
 <main id="content" role="main">
 <div class="phase-banner">
-    <p>
+  <p>
     <strong class="phase-tag">ALPHA</strong>
     <span>This is a new service – your <a href="#">feedback</a> will help us to improve it.</span>
-    </p>
+  </p>
 </div>
 
 {% if errors %}
 {{ forms.errorSummary(errors) }}
 {% endif %}
 
+ <h1 class="heading-large">
+        Digital and Agile Foundation Course
+      </h1>
 
-<h1 class="heading-large">
-    Digital and Agile Awareness Course
-</h1>
-
-<br>
-    <form action="/proto1/agile-awareness/select-your-course" method="post" class="form">
+      <form action="/proto1/agile-awareness/select-your-course" method="post" class="form">
         <div class="form-group">
-            <legend class="heading-medium">
-                Choose a course from the list below
-            </legend>
-            <fieldset>
-                <legend>
-                <h1 class="heading-small">London</h1>
-                </legend>
-                <div class="multiple-choice">
-                    <input id="radio-1" type="radio" name="radio-group" value="London, Thursday 7 September 2017">
-                    <label for="radio-1">Thursday 7 September 2017
-                        <p class="font-xsmall">5 spaces available</p></label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="radio-2" type="radio" name="radio-group" value="London, Monday 23 October 2017">
-                    <label for="radio-2">Monday 23 October 2017
-                        <p class="font-xsmall">4 spaces available</p></label>
-                </div>
-            </fieldset>
-        </div>
 
-        <div class="form-group">
-            <fieldset>
-                <legend>
-                    <h1 class="heading-small">Leeds</h1>
-                </legend>
-                <div class="multiple-choice">
-                    <input id="radio-3" type="radio" name="radio-group" value="Leeds, Thursday 7 September 2017">
-                    <label for="radio-3">Thursday 7 September 2017
-                        <p class="font-xsmall">10 spaces available</p>
-                    </label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="radio-4" type="radio" name="radio-group" value="Leeds, Monday 2 October 2017">
-                    <label for="radio-4">Monday 2 October 2017
-                        <p class="font-xsmall">15 spaces available</p>
-                    </label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="radio-5" type="radio" name="radio-group" value="Leeds, Wednesday 4 October 2017">
-                    <label for="radio-5"> Wednesday 4 October 2017
-                        <p class="font-xsmall">1 spaces available</p>
-                    </label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="radio-6" type="radio" name="radio-group" value="Leeds, Wednesday 11 October 2017">
-                    <label for="radio-6">Wednesday 11 October 2017
-                        <p class="font-xsmall">Course Full</p>
-                    </label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="radio-7" type="radio" name="radio-group" value="Leeds, Thursday 23 November 2017">
-                    <label for="radio-7">Thursday 23 November 2017
-                        <p class="font-xsmall">Course full</p>
-                    </label>
-                </div>
-            </fieldset>
-        </div>
+           <legend class="heading-medium">
+             Choose a course from the list below
+           </legend>
 
-        <div class="form-group">
-            <fieldset>
-                <legend>
-                    <h1 class="heading-small">Newcastle</h1>
-                </legend>
-                <div class="multiple-choice">
-                    <input id="radio-8" type="radio" name="radio-group" value="Newcastle, Tuesday 5 September 2017">
-                    <label for="radio-8">Tuesday 5 September 2017
-                        <p class="font-xsmall">4 spaces available</p>
-                    </label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="radio-9" type="radio" name="radio-group" value="Newcastle, Wednesday 11 October 2017">
-                    <label for="radio-9">Wednesday 11 October 2017
-                        <p class="font-xsmall">14 spaces available</p>
-                    </label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="radio-10" type="radio" name="radio-group" value="Newcastle, Tuesday 24 October 2017">
-                    <label for="radio-10">Tuesday 24 October 2017
-                        <p class="font-xsmall">3 spaces available</p>
-                    </label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="radio-11" type="radio" name="radio-group" value="Newcastle, Monday 6 November 2017">
-                    <label for="radio-11">Monday 6 November 2017
-                        <p class="font-xsmall">15 spaces available</p>
-                    </label>
-                </div>
-            </fieldset>
-        </div>
+  <div class="form-group">
+    <fieldset>
 
-        <div class="form-group">
-            <a href="digital-and-agile-awareness-course" class="link-back">Back to course information</a>
-            <!-- <p> <a class="button" href="application-page">Continue</a></p> -->
-            <br />
-            <input class="button" type="submit" name="" value="Continue">
+      <legend>
+        <h1 class="heading-small">London</h1>
+      </legend>
+
+      {% for foundCourse in apiResponse %}
+      {% if foundCourse.location === 'London' %}
+          <div class="multiple-choice">
+            <input id="{{ foundCourse._id }}" type="radio" name="{{ foundCourse._id }}" value="{{ foundCourse.location }}, {{ foundCourse.displayText}}" {% if foundCourse.isFull %}disabled{% endif %}>
+            <label for="{{ foundCourse._id }}">{{ foundCourse.displaySmall }}
+            <p class="font-xsmall">{{ foundCourse.spacesText }}</p></label>
+          </div>
+      {% endif %}
+      {% endfor %}
+
+  </fieldset>
+
+
+  <div class="form-group">
+    <fieldset>
+      <legend>
+
+        <h1 class="heading-small">Leeds</h1>
+      </legend>
+
+      {% for foundCourse in apiResponse %}
+      {% if foundCourse.location === 'Leeds' %}
+          <div class="multiple-choice">
+            <input id="{{ foundCourse._id }}" type="radio" name="{{ foundCourse._id }}" value="{{ foundCourse.location }}, {{ foundCourse.displayText}}" {% if foundCourse.isFull %}disabled{% endif %}>
+            <label for="{{ foundCourse._id }}">{{ foundCourse.displaySmall }}
+            <p class="font-xsmall">{{ foundCourse.spacesText }}</p></label>
+          </div>
+      {% endif %}
+      {% endfor %}
+
+  <div class="form-group">
+    <fieldset>
+
+      <legend>
+
+        <h1 class="heading-small">Newcastle</h1>
+      </legend>
+
+      {% for foundCourse in apiResponse %}
+      {% if foundCourse.location === 'Newcastle' %}
+          <div class="multiple-choice">
+            <input id="{{ foundCourse._id }}" type="radio" name="{{ foundCourse._id }}" value="{{ foundCourse.location }}, {{ foundCourse.displayText }}" {% if foundCourse.isFull %}disabled{% endif %}>
+            <label for="{{ foundCourse._id }}">{{ foundCourse.displaySmall }}
+            <p class="font-xsmall">{{ foundCourse.spacesText }}</p></label>
+          </div>
+      {% endif %}
+      {% endfor %}
+    </fieldset>
+  </div>
+</fieldset>
+
+
+<div class="form-group">
+    <a href="digital-and-agile-awareness-course" class="link-back">Back to course information</a>
+    <br />
+    <input class="button" type="submit" name="" value="Continue">
+</div>
         </div>
-    </form>
+      </form>
+
+    </div>
+  </div>
 
 </main>
 

@@ -26,7 +26,6 @@ GOV.UK Agile Foundation
         Digital and Agile Foundation Course
       </h1>
 
-<br>
       <form action="/proto1/agile-foundation/select-your-course" method="post" class="form">
         <div class="form-group">
 
@@ -41,15 +40,16 @@ GOV.UK Agile Foundation
         <h1 class="heading-small">London</h1>
       </legend>
 
-      <div class="multiple-choice">
-        <input id="radio-1" type="radio" name="radio-group" value="London, 11 to 21 September 2017">
-        <label for="radio-1">11 to 21 September 2017
-        <p class="font-xsmall">4 spaces available</p></label>
-      </div>
-      <div class="multiple-choice">
-        <input id="radio-2" type="radio" name="radio-group" value="London, 12 to 24 November 2017" disabled>
-        <label for="radio-2">12 to 24 November 2017 <p class="font-xsmall">Course full</p></label>
-      </div>
+      {% for foundCourse in apiResponse %}
+      {% if foundCourse.location === 'London' %}
+          <div class="multiple-choice">
+            <input id="{{ foundCourse._id }}" type="radio" name="{{ foundCourse._id }}" value="{{ foundCourse.location }}, {{ foundCourse.displayText}}" {% if foundCourse.isFull %}disabled{% endif %}>
+            <label for="{{ foundCourse._id }}">{{ foundCourse.displayText }}
+            <p class="font-xsmall">{{ foundCourse.spacesText }}</p></label>
+          </div>
+      {% endif %}
+      {% endfor %}
+
   </fieldset>
 
 
@@ -60,10 +60,15 @@ GOV.UK Agile Foundation
         <h1 class="heading-small">Leeds</h1>
       </legend>
 
-      <div class="multiple-choice">
-        <input id="radio-3" type="radio" name="radio-group" value="Leeds, 2 to 12 October 2017">
-        <label for="radio-3">2 to 13 October 2017 <p class="font-xsmall">8 spaces available</p></label>
-      </div>
+      {% for foundCourse in apiResponse %}
+      {% if foundCourse.location === 'Leeds' %}
+          <div class="multiple-choice">
+            <input id="{{ foundCourse._id }}" type="radio" name="{{ foundCourse._id }}" value="{{ foundCourse.location }}, {{ foundCourse.displayText}}" {% if foundCourse.isFull %}disabled{% endif %}>
+            <label for="{{ foundCourse._id }}">{{ foundCourse.displayText }}
+            <p class="font-xsmall">{{ foundCourse.spacesText }}</p></label>
+          </div>
+      {% endif %}
+      {% endfor %}
 
   <div class="form-group">
     <fieldset>
@@ -73,10 +78,15 @@ GOV.UK Agile Foundation
         <h1 class="heading-small">Newcastle</h1>
       </legend>
 
-      <div class="multiple-choice">
-        <input id="radio-4" type="radio" name="radio-group" value="Newcastle, 30 October to 10 November 2017">
-        <label for="radio-4">30 October to 10 November 2017<p class="font-xsmall">15 spaces available</p></label>
-      </div>
+      {% for foundCourse in apiResponse %}
+      {% if foundCourse.location === 'Newcastle' %}
+          <div class="multiple-choice">
+            <input id="{{ foundCourse._id }}" type="radio" name="{{ foundCourse._id }}" value="{{ foundCourse.location }}, {{ foundCourse.displayText}}" {% if foundCourse.isFull %}disabled{% endif %}>
+            <label for="{{ foundCourse._id }}">{{ foundCourse.displayText }}
+            <p class="font-xsmall">{{ foundCourse.spacesText }}</p></label>
+          </div>
+      {% endif %}
+      {% endfor %}
     </fieldset>
   </div>
 </fieldset>

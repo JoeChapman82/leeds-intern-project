@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+  GDS Academy Apply - Summary
 {% endblock %}
 
 {% block content %}
@@ -25,7 +25,7 @@
         Summary
      </h1>
 <div class="grid-row">
-
+    <form class="" action="/proto1/agile-foundation/summary-page" method="post">
   <div class="column-one-third">
     <p>Course Name:</p>
     <p>Course Duration:</p>
@@ -41,21 +41,25 @@
 
   <div class="column-two-thirds">
     <p>Digital and Agile Foundation Course</p>
-    <p>10 Days</p>
-    <p>Monday 2 October 2017</p>
-    <p>Friday 13 October 2017</p>
-    <p>Leeds</p>
-    <p>Joe Bloggs</p>
-    <p>DWP</p>
+    <p>10 Day</p>
+    <p>{% if startDate %}{{ startDate }}{% else %}Tuesday 24 October 2017{% endif %}</p>
+    <p>{% if endDate %}{{ endDate }}{% else %}Tuesday 01 November 2017{% endif %}</p>
+    <p>{% if location %}{{ location }}{% else %}Newcastle{% endif %}</p>
+    <p>{% if name %}{{ name }}{% else %}Joe Bloggs{% endif %}</p>
+    <p>{% if department %}{{ department }}{% else %}DWP{% endif %}</p>
     <br>
-    <p>0843 515 8313</p>
-    <p>JoeBloggs@dwp.gsi.gov.uk</p>
-    <p>Janedoe@dwp.gsi.gov.uk</p>
+    <p>{% if telephone %}{{ telephone }}{% else %}0843 515 8313{% endif %}</p>
+    <p>{% if email %}{{ email }}{% else %}JoeBloggs@dwp.gsi.gov.uk{% endif %}</p>
+    <p>{% if lineManager %}{{ lineManager }}{% else %}Janedoe@dwp.gsi.gov.uk{% endif %}</p>
   </div>
 
+  <a href="/proto1/agile-foundation/application-page" class="link-back">Back to select your details</a>
+    <p> <input type="submit" class="button" name="" value="Confirm"></p>
 
-  <a href="application-page" class="link-back">Back to select your details</a>
-    <p> <a class="button" href="holding-response">Confirm</a></p>
+</form>
+
+  </div>
+  </div>
   </div>
 </main>
 {% endblock %}

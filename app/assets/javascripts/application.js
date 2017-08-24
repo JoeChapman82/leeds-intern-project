@@ -16,4 +16,22 @@ $(document).ready(function () {
   // to toggle hidden content
   var showHideContent = new GOVUK.ShowHideContent()
   showHideContent.init()
-})
+
+
+  // worst thing I've ever done
+  if(document.querySelectorAll('input[type="radio"]')) {
+      document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
+          radio.addEventListener('click', justTerrible);
+      });
+  }
+function justTerrible() {
+    var self = this;
+    document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
+        if(radio !== self) {
+            radio.checked = false;
+        }
+    });
+}
+
+
+});

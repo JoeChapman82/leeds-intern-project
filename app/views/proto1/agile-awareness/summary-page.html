@@ -26,6 +26,7 @@
      </h1>
 <div class="grid-row">
 
+    <form class="" action="/proto1/agile-awareness/summary-page" method="post">
   <div class="column-one-third">
     <p>Course Name:</p>
     <p>Course Duration:</p>
@@ -42,8 +43,8 @@
   <div class="column-two-thirds">
     <p>Digital and Agile Awareness</p>
     <p>1 Day</p>
-    <p>{% if date %}{{ date }}{% else %}Tuesday 24 October 2017{% endif %}</p>
-    <p>{% if date %}{{ date }}{% else %}Tuesday 24 October 2017{% endif %}</p>
+    <p>{% if startDate %}{{ startDate }}{% else %}Tuesday 24 October 2017{% endif %}</p>
+    <p>{% if startDate %}{{ startDate }}{% else %}Tuesday 24 October 2017{% endif %}</p>
     <p>{% if location %}{{ location }}{% else %}Newcastle{% endif %}</p>
     <p>{% if name %}{{ name }}{% else %}Joe Bloggs{% endif %}</p>
     <p>{% if department %}{{ department }}{% else %}DWP{% endif %}</p>
@@ -54,7 +55,9 @@
   </div>
 
   <a href="/proto1/agile-awareness/application-page" class="link-back">Back to select your details</a>
-    <p> <a class="button" href="holding-response">Confirm</a></p>
+    <p> <input type="submit" class="button" name="" value="Confirm"></p>
+
+</form>
   </div>
   </div>
   </div>

@@ -24,7 +24,7 @@
 
             <h1 class="heading-large">Digital and Agile Awareness Course</h1>
             <p> You have currently selected: </p>
-            <p>{{ course }}</p>
+            <p>{{ location }} {{ startDate }}</p>
 
             <h2 class="heading-medium">Your details</h2>
             <form action="/proto1/agile-awareness/application-page" method="post" class="form">
@@ -36,7 +36,7 @@
                 {{ forms.textInput('email', 'Email', errors.email, '', email) }}
                 {{ forms.textInput('lineManager', 'Line manager\'s email', errors.lineManager, 'Emergency contact only', lineManager) }}
 
-                <a href="/select-your-course" class="link-back">Back to select your course</a>
+                <a href="select-your-course" class="link-back">Back to select your course</a>
                 <br />
                 <input class="button" type="submit" name="" value="Continue to summary">
 
